@@ -17,11 +17,14 @@ def start_function(event, context):
     else:
         # this is triggered from pubsub
         print("Executing from an Event in Pub/Sub")
-        print("This Function was triggered by messageId {} published at {}".format(context.event_id, context.timestamp))
+        print("This Function was triggered by messageId {} published at {}".format(
+            context.event_id, context.timestamp))
 
         # debug
         # print("context is {}".format(context))
-        ts = date.fromtimestamp(context.timestamp)
+        ts = context.timestamp
+        # format of timestamp 2020-07-22T22:05:01.125Z
+        d = datetime.strptime(ts.split('T')[0], "%Y-%m-%d")
         qdate = ts.strftime("%Y-%m-%d")
 
         # # debug
