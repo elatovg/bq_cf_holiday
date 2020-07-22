@@ -4,7 +4,9 @@ import base64
 import os
 
 def run_cf(event, context):
+    print("We get into here")
     if (context == "local"):
+        print("We get into local context")
         if 'QUERY_DATE' in os.environ:
             qdate = os.environ.get('QUERY_DATE')
         else:
@@ -63,5 +65,6 @@ def check_holiday(qdate, bq_dataset, bq_table):
 
 # for debugging locally
 if __name__ == "__main__":
+    print("called from main")
     (event, context) = ("local","local")
     run_cf(event, context)
