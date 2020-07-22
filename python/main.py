@@ -17,14 +17,13 @@ def start_function(event, context):
         # debug
         # print("context is {}".format(context))
         ts = context.timestamp
-        # ts = "2020-07-22T22:05:01.125Z"
 
         # format of timestamp 2020-07-22T22:05:01.125Z
         d = datetime.strptime(ts.split('T')[0], "%Y-%m-%d")
         qdate = d.strftime("%Y-%m-%d")
 
         # debug
-        print("qdate is {}".format(qdate))
+        # print("qdate is {}".format(qdate))
 
     #     if 'data' in event:
     #         name = base64.b64decode(event['data']).decode('utf-8')
@@ -38,9 +37,9 @@ def start_function(event, context):
     # print(holiday)
 
     if holiday:
-        print("today is a holiday")
+        print("{} is a holiday".format(qdate))
     else:
-        print("today is not a holiday")
+        print("{} is not a holiday".format(qdate))
     
 def check_holiday(qdate, bq_dataset, bq_table):
     # Construct a BigQuery client object.
