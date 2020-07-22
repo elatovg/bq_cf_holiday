@@ -1,14 +1,10 @@
 from google.cloud import bigquery
-from datetime import date
+from datetime import date, datetime
 import base64
 import os
 
 def start_function(event, context):
-    print("""This Function was triggered by messageId {} published at {}
-    """.format(context.event_id, context.timestamp))
-    print("We get into here")
     if (context == "local"):
-        print("We get into local context")
         if 'QUERY_DATE' in os.environ:
             qdate = os.environ.get('QUERY_DATE')
         else:
@@ -17,16 +13,14 @@ def start_function(event, context):
     else:
         # this is triggered from pubsub
         print("Executing from an Event in Pub/Sub")
-        print("This Function was triggered by messageId {} published at {}".format(
-            context.event_id, context.timestamp))
 
         # debug
         # print("context is {}".format(context))
         ts = context.timestamp
+
         # format of timestamp 2020-07-22T22:05:01.125Z
-        d = date.strptime(ts.split('T')[0], "%Y-%m-%d")
-        print(d)
-        # qdate = d.strftime("%Y-%m-%d")
+        d = datetime.strptime(ts.split('T')[0], "%Y-%m-%d")
+        qdate = d.strftime("%Y-%m-%d")
 
         # # debug
         # print("qdate is {}".format(qdate))
@@ -34,18 +28,18 @@ def start_function(event, context):
     #     if 'data' in event:
     #         name = base64.b64decode(event['data']).decode('utf-8')
 
-    # # prepare BQ info
-    # bq_dataset = os.environ.get('BQ_DATASET')
-    # bq_table = os.environ.get('BQ_TABLE')
-    # holiday = check_holiday(qdate,bq_dataset,bq_table)
+    # prepare BQ info
+    bq_dataset = os.environ.get('BQ_DATASET')
+    bq_table = os.environ.get('BQ_TABLE')
+    holiday = check_holiday(qdate,bq_dataset,bq_table)
     
     # # debugging
     # # print(holiday)
 
-    # if holiday:
-    #     print("today is a holiday")
-    # else:
-    #     print("today is not a holiday")
+    if holiday:
+        print("today is a holiday")
+    else:
+        print("today is not a holiday")
     
 def check_holiday(qdate, bq_dataset, bq_table):
     # Construct a BigQuery client object.
@@ -69,6 +63,6 @@ def check_holiday(qdate, bq_dataset, bq_table):
     return (result.total_rows != 0)
 
 # for debugging locally
-# if __name__ == "__main__":
-#     (event, context) = ("local","local")
-#     start_function(event, context)
+if __name__ == "__main__":
+    (event, context) = ("local","local")
+    start_function(event, context)
