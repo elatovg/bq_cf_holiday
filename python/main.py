@@ -4,7 +4,6 @@ import base64
 import os
 
 def start_function(event, context):
-    context = "balls"
     if (context == "local"):
         if 'QUERY_DATE' in os.environ:
             qdate = os.environ.get('QUERY_DATE')
@@ -31,17 +30,17 @@ def start_function(event, context):
     #         name = base64.b64decode(event['data']).decode('utf-8')
 
     # prepare BQ info
-    # bq_dataset = os.environ.get('BQ_DATASET')
-    # bq_table = os.environ.get('BQ_TABLE')
-    # holiday = check_holiday(qdate,bq_dataset,bq_table)
+    bq_dataset = os.environ.get('BQ_DATASET')
+    bq_table = os.environ.get('BQ_TABLE')
+    holiday = check_holiday(qdate,bq_dataset,bq_table)
     
-    # # # debugging
-    # # # print(holiday)
+    # debugging
+    # print(holiday)
 
-    # if holiday:
-    #     print("today is a holiday")
-    # else:
-    #     print("today is not a holiday")
+    if holiday:
+        print("today is a holiday")
+    else:
+        print("today is not a holiday")
     
 def check_holiday(qdate, bq_dataset, bq_table):
     # Construct a BigQuery client object.
