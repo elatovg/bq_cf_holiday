@@ -36,15 +36,15 @@ def start_function(event, context):
     else:
         # this is triggered from pubsub
         print("Executing from an Event in Pub/Sub")
-        print("This Function was triggered by messageId {} published at {}".format(context.event_id, context.timestamp))
+        # print("This Function was triggered by messageId {} published at {}".format(context.event_id, context.timestamp))
 
         # debug
-        print("context is {}".format(context))
-        ts = date.fromtimestamp(context.timestamp)
-        qdate = ts.strftime("%Y-%m-%d")
+        # print("context is {}".format(context))
+        # ts = date.fromtimestamp(context.timestamp)
+        # qdate = ts.strftime("%Y-%m-%d")
 
-        # debug
-        print("qdate is {}".format(qdate))
+        # # debug
+        # print("qdate is {}".format(qdate))
 
     #     if 'data' in event:
     #         name = base64.b64decode(event['data']).decode('utf-8')
