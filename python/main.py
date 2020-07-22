@@ -3,25 +3,6 @@ from datetime import date
 import base64
 import os
 
-def hello_pubsub(event, context):
-    """Background Cloud Function to be triggered by Pub/Sub.
-    Args:
-         event (dict):  The dictionary with data specific to this type of
-         event. The `data` field contains the PubsubMessage message. The
-         `attributes` field will contain custom attributes if there are any.
-         context (google.cloud.functions.Context): The Cloud Functions event
-         metadata. The `event_id` field contains the Pub/Sub message ID. The
-         `timestamp` field contains the publish time.
-    """
-    print("""This Function was triggered by messageId {} published at {}
-    """.format(context.event_id, context.timestamp))
-
-    if 'data' in event:
-        name = base64.b64decode(event['data']).decode('utf-8')
-    else:
-        name = 'World'
-    print('Hello {}!'.format(name))
-
 def start_function(event, context):
     print("""This Function was triggered by messageId {} published at {}
     """.format(context.event_id, context.timestamp))
@@ -36,7 +17,7 @@ def start_function(event, context):
     else:
         # this is triggered from pubsub
         print("Executing from an Event in Pub/Sub")
-        # print("This Function was triggered by messageId {} published at {}".format(context.event_id, context.timestamp))
+        print("This Function was triggered by messageId {} published at {}".format(context.event_id, context.timestamp))
 
         # debug
         # print("context is {}".format(context))
