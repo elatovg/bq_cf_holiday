@@ -25,8 +25,9 @@ def start_function(event, context):
         ts = context.timestamp
         print(ts)
         # format of timestamp 2020-07-22T22:05:01.125Z
-        # d = datetime.strptime(ts.split('T')[0], "%Y-%m-%d")
-        # qdate = ts.strftime("%Y-%m-%d")
+        d = datetime.strptime(ts.split('T')[0], "%Y-%m-%d")
+        print(d)
+        # qdate = d.strftime("%Y-%m-%d")
 
         # # debug
         # print("qdate is {}".format(qdate))
