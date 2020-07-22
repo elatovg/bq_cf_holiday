@@ -20,12 +20,12 @@ def start_function(event, context):
         print("This Function was triggered by messageId {} published at {}".format(context.event_id, context.timestamp))
 
         # debug
-        print("context is {}".format(context))
-        # ts = date.fromtimestamp(context.timestamp)
-        # qdate = ts.strftime("%Y-%m-%d")
+        # print("context is {}".format(context))
+        ts = date.fromtimestamp(context.timestamp)
+        qdate = ts.strftime("%Y-%m-%d")
 
         # # debug
-        # print("qdate is {}".format(qdate))
+        print("qdate is {}".format(qdate))
 
     #     if 'data' in event:
     #         name = base64.b64decode(event['data']).decode('utf-8')
