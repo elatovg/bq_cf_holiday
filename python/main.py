@@ -24,6 +24,7 @@ def start_function(event, context):
         # print("context is {}".format(context))
         ts = context.timestamp
         print(ts.split('T')[0])
+        print(type(ts.split('T')[0]))
         # format of timestamp 2020-07-22T22:05:01.125Z
         # d = datetime.strptime(ts.split('T')[0], "%Y-%m-%d")
         # print(d)
