@@ -64,7 +64,6 @@ def check_holiday(qdate, bq_dataset, bq_table):
     return (result.total_rows != 0)
 
 # for debugging locally
-if __name__ == "__main__":
-    print("called from main")
-    (event, context) = ("local","local")
-    run_cf(event, context)
+# if __name__ == "__main__":
+#     (event, context) = ("local","local")
+#     run_cf(event, context)
