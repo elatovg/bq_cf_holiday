@@ -23,12 +23,13 @@ def start_function(event, context):
         # debug
         # print("context is {}".format(context))
         ts = context.timestamp
+        print(ts)
         # format of timestamp 2020-07-22T22:05:01.125Z
-        d = datetime.strptime(ts.split('T')[0], "%Y-%m-%d")
-        qdate = ts.strftime("%Y-%m-%d")
+        # d = datetime.strptime(ts.split('T')[0], "%Y-%m-%d")
+        # qdate = ts.strftime("%Y-%m-%d")
 
         # # debug
-        print("qdate is {}".format(qdate))
+        # print("qdate is {}".format(qdate))
 
     #     if 'data' in event:
     #         name = base64.b64decode(event['data']).decode('utf-8')
