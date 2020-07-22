@@ -3,7 +3,7 @@ from datetime import date
 import base64
 import os
 
-def start_function(event, context):
+def hello_pubsub(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.
     Args:
          event (dict):  The dictionary with data specific to this type of
@@ -22,7 +22,9 @@ def start_function(event, context):
         name = 'World'
     print('Hello {}!'.format(name))
 
-def start_fudnction(event, context):
+def start_function(event, context):
+    print("""This Function was triggered by messageId {} published at {}
+    """.format(context.event_id, context.timestamp))
     print("We get into here")
     if (context == "local"):
         print("We get into local context")
