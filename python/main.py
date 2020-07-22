@@ -20,7 +20,7 @@ def start_function(event, context):
         print("This Function was triggered by messageId {} published at {}".format(context.event_id, context.timestamp))
 
         # debug
-        # print("context is {}".format(context))
+        print("context is {}".format(context))
         # ts = date.fromtimestamp(context.timestamp)
         # qdate = ts.strftime("%Y-%m-%d")
 
