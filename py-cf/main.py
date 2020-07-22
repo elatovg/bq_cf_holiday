@@ -3,7 +3,7 @@ from datetime import date, datetime
 import base64
 import os
 
-def start_function(event, context):
+def run_cf(event, context):
     if (context == "local"):
         if 'QUERY_DATE' in os.environ:
             qdate = os.environ.get('QUERY_DATE')
