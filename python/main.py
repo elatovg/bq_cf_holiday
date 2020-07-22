@@ -3,7 +3,7 @@ from datetime import date
 import base64
 import os
 
-def run_cf(event, context):
+def start_function(event, context):
     print("We get into here")
     if (context == "local"):
         print("We get into local context")
@@ -66,4 +66,4 @@ def check_holiday(qdate, bq_dataset, bq_table):
 # for debugging locally
 # if __name__ == "__main__":
 #     (event, context) = ("local","local")
-#     run_cf(event, context)
+#     start_function(event, context)
