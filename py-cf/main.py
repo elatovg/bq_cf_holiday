@@ -15,7 +15,7 @@ def run_cf(event, context):
         print("Executing from an Event in Pub/Sub")
 
         # debug
-        # print("context is {}".format(context))
+        print("context is {}".format(context))
         ts = context.timestamp
 
         # format of timestamp 2020-07-22T22:05:01.125Z
@@ -26,7 +26,7 @@ def run_cf(event, context):
             qdate = os.environ.get('QUERY_DATE')
 
         # debug
-        # print("qdate is {}".format(qdate))
+        print("qdate is {}".format(qdate))
 
     #     if 'data' in event:
     #         name = base64.b64decode(event['data']).decode('utf-8')
