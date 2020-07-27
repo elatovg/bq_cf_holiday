@@ -22,6 +22,9 @@ def run_cf(event, context):
         d = datetime.strptime(ts.split('T')[0], "%Y-%m-%d")
         qdate = d.strftime("%Y-%m-%d")
 
+        if 'QUERY_DATE' in os.environ:
+            qdate = os.environ.get('QUERY_DATE')
+
         # debug
         # print("qdate is {}".format(qdate))
 
